@@ -67,42 +67,42 @@ export default function CompanyProfile() {
   }
 
   if (!company) {
-    return <div className="text-red-600">Company not found.</div>;
+    return <div className="text-red-400">Company not found.</div>;
   }
 
   return (
     <div className="space-y-8">
-      <h2 className="text-3xl font-bold">{company.name}</h2>
+      <h2 className="text-4xl font-bold text-white">{company.name}</h2>
 
       {/* OVERVIEW */}
-      <section className="bg-white p-6 rounded-lg border space-y-2">
-        <h3 className="text-lg font-semibold">Overview</h3>
-        <p><strong>Website:</strong> {company.website}</p>
-        <p><strong>Sector:</strong> {company.sector}</p>
-        <p><strong>Stage:</strong> {company.stage}</p>
-        <p><strong>Location:</strong> {company.location}</p>
-        <p className="text-gray-600">{company.description}</p>
+      <section className="bg-slate-700/50 border border-slate-600 p-6 rounded-lg space-y-2">
+        <h3 className="text-lg font-semibold text-white">Overview</h3>
+        <p className="text-slate-200"><strong>Website:</strong> <a href={company.website} target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300">{company.website}</a></p>
+        <p className="text-slate-200"><strong>Sector:</strong> {company.sector}</p>
+        <p className="text-slate-200"><strong>Stage:</strong> {company.stage}</p>
+        <p className="text-slate-200"><strong>Location:</strong> {company.location}</p>
+        <p className="text-slate-300">{company.description}</p>
       </section>
 
       {/* NOTES */}
-      <section className="bg-white p-6 rounded-lg border">
-        <h3 className="text-lg font-semibold mb-2">Notes</h3>
+      <section className="bg-slate-700/50 border border-slate-600 p-6 rounded-lg">
+        <h3 className="text-lg font-semibold mb-2 text-white">Notes</h3>
         <textarea
           value={notes}
           onChange={(e) => setNotes(e.target.value)}
-          className="w-full h-40 border rounded-lg p-3"
+          className="w-full h-40 border border-slate-600 bg-slate-800/50 rounded-lg p-3 text-white placeholder-slate-400 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"
         />
         <button
           onClick={handleSaveNotes}
-          className="mt-3 px-4 py-2 bg-black text-white rounded-lg"
+          className="mt-3 px-4 py-2 bg-linear-to-r from-blue-500 to-cyan-500 text-white rounded-lg hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 font-semibold"
         >
           Save Notes
         </button>
       </section>
 
       {/* SAVE TO LIST */}
-      <section className="bg-white p-6 rounded-lg border">
-        <h3 className="text-lg font-semibold mb-3">Save to List</h3>
+      <section className="bg-slate-700/50 border border-slate-600 p-6 rounded-lg">
+        <h3 className="text-lg font-semibold mb-3 text-white">Save to List</h3>
         <button
           onClick={() => {
             const allLists = getLists();
@@ -110,13 +110,13 @@ export default function CompanyProfile() {
             setListSuccess("");
             setShowListModal(true);
           }}
-          className="px-4 py-2 bg-gray-900 text-white rounded-lg"
+          className="px-4 py-2 bg-linear-to-r from-blue-500 to-cyan-500 text-white rounded-lg hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 font-semibold"
         >
           Add to List
         </button>
 
         {listSuccess && (
-          <div className="mt-4 p-3 bg-green-100 text-green-700 rounded border border-green-300">
+          <div className="mt-4 p-3 bg-green-500/30 text-green-300 rounded border border-green-500/50">
             {listSuccess}
           </div>
         )}
@@ -124,12 +124,12 @@ export default function CompanyProfile() {
 
       {/* LIST SELECTION MODAL */}
       {showListModal && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-lg p-6 w-96 max-h-96 overflow-y-auto">
-            <h2 className="text-xl font-bold mb-4">Select a List</h2>
+        <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50">
+          <div className="bg-slate-800 border border-slate-600 rounded-lg p-6 w-96 max-h-96 overflow-y-auto">
+            <h2 className="text-xl font-bold mb-4 text-white">Select a List</h2>
             
             {lists.length === 0 ? (
-              <p className="text-gray-600">No lists available. Create one first.</p>
+              <p className="text-slate-400">No lists available. Create one first.</p>
             ) : (
               <div className="space-y-2">
                 {lists.map((list) => (
@@ -145,10 +145,10 @@ export default function CompanyProfile() {
                       }
                       setShowListModal(false);
                     }}
-                    className="w-full text-left p-3 border rounded-lg hover:bg-gray-100 transition"
+                    className="w-full text-left p-3 border border-slate-600 bg-slate-700/30 rounded-lg hover:bg-slate-700/60 hover:border-cyan-500/50 transition text-white"
                   >
                     <p className="font-semibold">{list.name}</p>
-                    <p className="text-sm text-gray-600">{list.companyIds.length} companies</p>
+                    <p className="text-sm text-slate-400">{list.companyIds.length} companies</p>
                   </button>
                 ))}
               </div>
@@ -156,7 +156,7 @@ export default function CompanyProfile() {
 
             <button
               onClick={() => setShowListModal(false)}
-              className="w-full mt-4 px-4 py-2 bg-gray-300 text-black rounded-lg hover:bg-gray-400"
+              className="w-full mt-4 px-4 py-2 bg-slate-700 text-slate-300 rounded-lg hover:bg-slate-600 transition"
             >
               Cancel
             </button>
@@ -165,18 +165,18 @@ export default function CompanyProfile() {
       )}
 
       {/* ENRICHMENT Placeholder */}
-      <section className="bg-white p-6 rounded-lg border">
-        <h3 className="text-lg font-semibold mb-3">Enrichment</h3>
+      <section className="bg-slate-700/50 border border-slate-600 p-6 rounded-lg">
+        <h3 className="text-lg font-semibold mb-3 text-white">Enrichment</h3>
         <button
           onClick={handleEnrich}
           disabled={loading} 
-          className="px-4 py-2 bg-blue-600 text-white rounded-lg"
+          className="px-4 py-2 bg-linear-to-r from-blue-500 to-cyan-500 text-white rounded-lg hover:shadow-lg hover:shadow-blue-500/30 transition-all duration-300 font-semibold disabled:opacity-50"
         >
           {loading ? "Enriching..." : "Enrich Company"}
         </button>
 
         {error && (
-          <div className="mt-4 p-3 bg-red-100 text-red-700 rounded border border-red-300">
+          <div className="mt-4 p-3 bg-red-500/30 text-red-300 rounded border border-red-500/50">
             {error}
           </div>
         )}
@@ -186,14 +186,14 @@ export default function CompanyProfile() {
 
             {/* SUMMARY */}
             {enriched.summary && (
-              <p><strong>Summary:</strong> {enriched.summary}</p>
+              <p className="text-slate-200"><strong className="text-white">Summary:</strong> {enriched.summary}</p>
             )}
 
             {/* WHAT THEY DO */}
             {Array.isArray(enriched.bullets) && (
               <div>
-                <strong>What They Do:</strong>
-                <ul className="list-disc ml-6">
+                <strong className="text-white block mb-2">What They Do:</strong>
+                <ul className="list-disc ml-6 text-slate-200 space-y-1">
                   {enriched.bullets.map((b: string, idx: number) => (
                     <li key={idx}>{b}</li>
                   ))}
@@ -204,10 +204,10 @@ export default function CompanyProfile() {
             {/* KEYWORDS */}
             {Array.isArray(enriched.keywords) && (
               <div>
-                <strong>Keywords:</strong>
+                <strong className="text-white block mb-2">Keywords:</strong>
                 <div className="flex flex-wrap gap-2 mt-1">
                   {enriched.keywords.map((k: string) => (
-                    <span key={k} className="px-2 py-1 bg-gray-100 rounded">
+                    <span key={k} className="px-3 py-1 bg-cyan-500/30 text-cyan-300 rounded-full text-sm border border-cyan-500/50">
                       {k}
                     </span>
                   ))}
@@ -218,8 +218,8 @@ export default function CompanyProfile() {
             {/* SIGNALS */}
             {Array.isArray(enriched.signals) && (
               <div>
-                <strong>Signals:</strong>
-                <ul className="list-disc ml-6">
+                <strong className="text-white block mb-2">Signals:</strong>
+                <ul className="list-disc ml-6 text-slate-200 space-y-1">
                   {enriched.signals.map((s: string, idx: number) => (
                     <li key={idx}>{s}</li>
                   ))}
@@ -230,11 +230,11 @@ export default function CompanyProfile() {
             {/* SOURCES */}
             {Array.isArray(enriched.sources) && (
               <div>
-                <strong>Sources:</strong>
-                <ul className="text-sm ml-6 text-gray-600">
+                <strong className="text-white block mb-2">Sources:</strong>
+                <ul className="text-sm ml-6 text-slate-400 space-y-1">
                   {enriched.sources.map((src: any, i: number) => (
                     <li key={i}>
-                      {src.url} — <span>{src.timestamp}</span>
+                      <a href={src.url} target="_blank" rel="noopener noreferrer" className="text-cyan-400 hover:text-cyan-300">{src.url}</a> — <span className="text-slate-500">{src.timestamp}</span>
                     </li>
                   ))}
                 </ul>

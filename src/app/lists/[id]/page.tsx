@@ -19,7 +19,7 @@ export default function ListDetailsPage() {
     setList(l);
   }, [id]);
 
-  if (!list) return <div>List not found.</div>;
+  if (!list) return <div className="text-red-400">List not found.</div>;
 
   // companies inside this list
   const listCompanies = companies.filter((c) =>
@@ -40,32 +40,32 @@ export default function ListDetailsPage() {
 
   return (
     <div className="space-y-6">
-      <h2 className="text-2xl font-semibold">{list.name}</h2>
+      <h2 className="text-3xl font-bold text-white">{list.name}</h2>
 
-      <table className="w-full border bg-white rounded-lg">
-        <thead className="bg-gray-100 text-left text-sm">
+      <table className="w-full border border-slate-600 bg-slate-700/50 rounded-lg overflow-hidden">
+        <thead className="bg-slate-700/80 border-b border-slate-600 text-left text-sm">
           <tr>
-            <th className="p-3">Name</th>
-            <th className="p-3">Sector</th>
-            <th className="p-3">Actions</th>
+            <th className="p-3 text-white font-semibold">Name</th>
+            <th className="p-3 text-white font-semibold">Sector</th>
+            <th className="p-3 text-white font-semibold">Actions</th>
           </tr>
         </thead>
         <tbody>
           {listCompanies.length === 0 ? (
             <tr>
-              <td className="p-3" colSpan={3}>No companies in this list.</td>
+              <td className="p-3 text-slate-400" colSpan={3}>No companies in this list.</td>
             </tr>
           ) : (
             listCompanies.map((c) => (
-              <tr key={c.id} className="border-t hover:bg-gray-50">
+              <tr key={c.id} className="border-t border-slate-600 hover:bg-slate-600/50 transition">
                 <td className="p-3">
-                  <Link href={`/companies/${c.id}`}>{c.name}</Link>
+                  <Link href={`/companies/${c.id}`} className="text-cyan-400 hover:text-cyan-300 transition">{c.name}</Link>
                 </td>
-                <td className="p-3">{c.sector}</td>
+                <td className="p-3 text-slate-300">{c.sector}</td>
                 <td className="p-3">
                   <button
                     onClick={() => removeCompany(c.id)}
-                    className="px-3 py-1 text-sm bg-red-600 text-white rounded-lg"
+                    className="px-3 py-1 text-sm bg-red-500/30 text-red-300 hover:bg-red-500/50 rounded-lg transition border border-red-500/50"
                   >
                     Remove
                   </button>

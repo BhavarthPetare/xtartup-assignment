@@ -15,34 +15,34 @@ export default function SavedSearchesPage() {
 
     return (
         <div className="space-y-6">
-            <h2 className="text-2xl font-semibold">Saved Searches</h2>
+            <h2 className="text-3xl font-bold text-white">Saved Searches</h2>
             {searches.length === 0 ? (
-                <div className="text-gray-500">No saved searches yet.</div>
+                <div className="text-slate-400">No saved searches yet.</div>
             ) : (
-                <table className="w-full border rounded-lg bg-white">
-                    <thead className="bg-gray-100">
+                <table className="w-full border border-slate-600 rounded-lg bg-slate-700/50">
+                    <thead className="bg-slate-700/80 border-b border-slate-600">
                         <tr>
-                            <th className="p-3 text-left">Name</th>
-                            <th className="p-3 text-left">Query</th>
-                            <th className="p-3 text-left">Filters</th>
-                            <th className="p-3 text-left">Run</th>
+                            <th className="p-3 text-left text-white font-semibold">Name</th>
+                            <th className="p-3 text-left text-white font-semibold">Query</th>
+                            <th className="p-3 text-left text-white font-semibold">Filters</th>
+                            <th className="p-3 text-left text-white font-semibold">Run</th>
                         </tr>
                     </thead>
                     <tbody>
                         {searches.map((s) => (
-                            <tr key={s.id} className="border-t hover:bg-gray-50">
-                                <td className="p-3">{s.name}</td>
-                                <td className="p-3">{s.query || "(empty)"}</td>
-                                <td className="p-3">
-                                    {s.sector !== "all" && `Sector: ${s.sector}`}
-                                    {s.stage !== "all" && `Stage: ${s.stage}`}
+                            <tr key={s.id} className="border-t border-slate-600 hover:bg-slate-600/50 transition">
+                                <td className="p-3 text-slate-200">{s.name}</td>
+                                <td className="p-3 text-slate-300">{s.query || <span className="text-slate-500 italic">(empty)</span>}</td>
+                                <td className="p-3 text-slate-300">
+                                    {s.sector !== "all" && <span className="block">{s.sector}</span>}
+                                    {s.stage !== "all" && <span className="block">{s.stage}</span>}
                                 </td>
                                 <td className="p-3">
                                     <Link
                                         href={`/companies?run=${s.id}`}
-                                        className="text-blue-600 font-medium"
+                                        className="text-cyan-400 hover:text-cyan-300 font-medium transition"
                                     >
-                                        Run
+                                        Run →
                                     </Link>
                                 </td>
                             </tr>

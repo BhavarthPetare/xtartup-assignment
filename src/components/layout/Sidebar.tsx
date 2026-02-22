@@ -13,9 +13,9 @@ export default function Sidebar() {
   const pathname = usePathname();
 
   return (
-    <aside className="w-64 border-r bg-white p-6">
+    <aside className="w-64 border-r border-slate-700 bg-linear-to-b from-slate-800 to-slate-900 p-6">
       <Link href={'/'}>
-        <h1 className="text-2xl font-bold tracking-tight mb-8">
+        <h1 className="text-2xl font-bold tracking-tight mb-8 bg-linear-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
           VC Scout
         </h1>
       </Link>
@@ -28,13 +28,11 @@ export default function Sidebar() {
             <Link
               key={item.href}
               href={item.href}
-              className={`block px-4 py-2 rounded-lg text-sm font-medium transition 
-                ${
-                  active
-                    ? "bg-gray-900 text-white"
-                    : "hover:bg-gray-100 text-gray-700"
-                }
-              `}
+              className={`block px-4 py-2 rounded-lg text-sm font-medium transition ${
+                active
+                  ? "bg-linear-to-r from-blue-500 to-cyan-500 text-white shadow-lg shadow-blue-500/30"
+                  : "text-slate-300 hover:bg-slate-700/50 hover:text-white"
+              }`}
             >
               {item.label}
             </Link>

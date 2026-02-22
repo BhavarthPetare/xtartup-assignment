@@ -67,7 +67,7 @@ export function CompaniesList() {
 
   return (
     <div>
-      <h2 className="text-2xl font-semibold mb-6">Companies</h2>
+      <h2 className="text-3xl font-bold mb-8 text-white">Companies</h2>
 
       {/* SEARCH + FILTERS */}
       <div className="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
@@ -76,17 +76,17 @@ export function CompaniesList() {
           placeholder="Search companies..."
           value={query}
           onChange={(e) => setQuery(e.target.value)}
-          className="col-span-1 md:col-span-2 border rounded-lg px-3 py-2"
+          className="col-span-1 md:col-span-2 border border-slate-600 bg-slate-700/50 rounded-lg px-4 py-2 text-white placeholder-slate-400 focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"
         />
 
         <select
           value={sector}
           onChange={(e) => setSector(e.target.value)}
-          className="border rounded-lg px-3 py-2"
+          className="border border-slate-600 bg-slate-700/50 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"
         >
-          <option value="all">All Sectors</option>
+          <option value="all" className="bg-slate-800 text-white">All Sectors</option>
           {uniqueSectors.map((s) => (
-            <option key={s} value={s}>
+            <option key={s} value={s} className="bg-slate-800 text-white">
               {s}
             </option>
           ))}
@@ -95,11 +95,11 @@ export function CompaniesList() {
         <select
           value={stage}
           onChange={(e) => setStage(e.target.value)}
-          className="border rounded-lg px-3 py-2"
+          className="border border-slate-600 bg-slate-700/50 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"
         >
-          <option value="all">All Stages</option>
+          <option value="all" className="bg-slate-800 text-white">All Stages</option>
           {uniqueStages.map((s) => (
-            <option key={s} value={s}>
+            <option key={s} value={s} className="bg-slate-800 text-white">
               {s}
             </option>
           ))}
@@ -108,17 +108,17 @@ export function CompaniesList() {
         <select
           value={sort}
           onChange={(e) => setSort(e.target.value)}
-          className="border rounded-lg px-3 py-2"
+          className="border border-slate-600 bg-slate-700/50 rounded-lg px-4 py-2 text-white focus:outline-none focus:border-cyan-500 focus:ring-1 focus:ring-cyan-500"
         >
-          <option value="name_asc">Name (A-Z)</option>
-          <option value="name_desc">Name (Z-A)</option>
+          <option value="name_asc" className="bg-slate-800 text-white">Name (A-Z)</option>
+          <option value="name_desc" className="bg-slate-800 text-white">Name (Z-A)</option>
         </select>
       </div>
 
       {/* SAVE SEARCH */}
       <button
         onClick={handleSaveSearch}
-        className="mb-6 px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700"
+        className="mb-6 px-6 py-2 bg-linear-to-r from-blue-500 to-cyan-500 text-white rounded-lg hover:shadow-lg hover:shadow-blue-500/50 transition-all duration-300 font-semibold"
       >
         Save This Search
       </button>
@@ -127,18 +127,18 @@ export function CompaniesList() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {filtered.map((company) => (
           <Link key={company.id} href={`/companies/${company.id}`}>
-            <div className="p-4 bg-white rounded-lg border hover:shadow-lg transition cursor-pointer">
-              <h3 className="font-semibold text-lg">{company.name}</h3>
-              <p className="text-sm text-gray-600">{company.sector}</p>
-              <p className="text-xs text-gray-500">{company.stage}</p>
-              <p className="text-xs text-gray-500 mt-1">{company.location}</p>
+            <div className="p-4 bg-slate-700/50 border border-slate-600 rounded-lg hover:border-cyan-500/50 hover:shadow-lg hover:shadow-cyan-500/20 transition-all duration-300 cursor-pointer">
+              <h3 className="font-semibold text-lg text-white">{company.name}</h3>
+              <p className="text-sm text-slate-300">{company.sector}</p>
+              <p className="text-xs text-slate-400">{company.stage}</p>
+              <p className="text-xs text-slate-400 mt-1">{company.location}</p>
             </div>
           </Link>
         ))}
       </div>
 
       {filtered.length === 0 && (
-        <p className="text-center text-gray-500 mt-8">No companies found.</p>
+        <p className="text-center text-slate-400 mt-8">No companies found.</p>
       )}
     </div>
   );
