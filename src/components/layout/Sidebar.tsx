@@ -14,9 +14,11 @@ export default function Sidebar() {
 
   return (
     <aside className="w-64 border-r bg-white p-6">
-      <h1 className="text-2xl font-bold tracking-tight mb-8">
-        VC Scout
-      </h1>
+      <Link href={'/'}>
+        <h1 className="text-2xl font-bold tracking-tight mb-8">
+          VC Scout
+        </h1>
+      </Link>
 
       <nav className="space-y-2">
         {navItems.map((item) => {
